@@ -1,0 +1,26 @@
+From 46a7d47e6e5acf98ae3d7f2a6d5d237e3ad493e0 Mon Sep 17 00:00:00 2001
+From: Loganaden Velvindron <logan@cyberstorm.mu>
+Date: Mon, 24 Feb 2020 10:51:22 +0400
+Subject: [PATCH 1/2] Remove DSA-NSEC3-SHA1 DNSSEC algorithm as this is set to
+ status MUST NOT implement in RFC 8624
+
+---
+ src/crypto.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/crypto.c b/src/crypto.c
+index 6934d74..8468728 100644
+--- a/src/crypto.c
++++ b/src/crypto.c
+@@ -438,7 +438,7 @@ char *algo_digest_name(int algo)
+     case 2: return NULL;          /* Diffie-Hellman */
+     case 3: return "sha1";        /* DSA/SHA1 */ 
+     case 5: return "sha1";        /* RSA/SHA1 */
+-    case 6: return "sha1";        /* DSA-NSEC3-SHA1 */
++    case 6: return NULL;          /* DSA-NSEC3-SHA1 - Must Not Implement. RFC 8624 section 3.1 */
+     case 7: return "sha1";        /* RSASHA1-NSEC3-SHA1 */
+     case 8: return "sha256";      /* RSA/SHA-256 */
+     case 10: return "sha512";     /* RSA/SHA-512 */
+-- 
+2.14.1
+
